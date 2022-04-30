@@ -1,1 +1,1 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/afkm2g16rptegesy?svg=true)](https://ci.appveyor.com/project/AVKretov/testingwebinterfaces)
+[![Build status](https://ci.appveyor.com/api/projects/status/mundguodxdk54m6j?svg=true)](https://ci.appveyor.com/project/AVKretov/testingwebinterfaces)

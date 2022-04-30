@@ -13,4 +13,4 @@ install:
   - java -jar ./Artifcts/app-order.jar &
 
 build_script:
-  - chmod +x gradlew
+  - chmod +x gradlew --info

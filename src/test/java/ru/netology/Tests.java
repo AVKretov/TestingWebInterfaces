@@ -19,5 +19,35 @@ class Tests {
         $(".paragraph_theme_alfa-on-white").shouldHave(exactText("Ваша заявка успешно отправлена! " +
                 "Наш менеджер свяжется с вами в ближайшее время."));
     }
+    @Test
+    void wrongName() {
+        open("http://localhost:9999");
+        $("[name=\"name\"]").setValue("asadasd");
+        $("[name=\"phone\"]").setValue("+79270000000");
+        $(".checkbox__box").click();
+        $(".button__text").click();
+        $(".input_invalid").shouldHave(text("Имя и Фамилия указаные неверно." +
+                " Допустимы только русские буквы, пробелы и дефисы."));
+    }
+    @Test
+    void wrongPhone() {
+        open("http://localhost:9999");
+        $("[name=\"name\"]").setValue("Вася Пупкин");
+        $("[name=\"phone\"]").setValue("89270000000");
+        $(".checkbox__box").click();
+        $(".button__text").click();
+        $(".input_invalid").shouldHave(text("Телефон указан неверно. Должно быть 11 цифр, " +
+                "например, +79012345678."));
+    }
+
+    @Test
+    void withoutCheck() {
+        open("http://localhost:9999");
+        $("[name=\"name\"]").setValue("Вася Пупкин");
+        $("[name=\"phone\"]").setValue("+79270000000");
+        $(".button__text").click();
+        $(".input_invalid").shouldHave(text("Я соглашаюсь с условиями обработки и использования" +
+                " моих персональных данных и разрешаю сделать запрос в бюро кредитных историй"));
+    }
 
 }

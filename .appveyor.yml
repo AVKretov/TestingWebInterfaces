@@ -15,5 +15,3 @@ install:
 build_script:
   - ps: ./gradlew test --info "-Dselenide.headless=true"  # стартуем Selenide в Headless-режиме (см.ниже)
 
-on_finish:
-  - ps: Stop-Process -Id $App.Idlew test --info   # запускаем тест, флаг --info позволяет выводить больше информации

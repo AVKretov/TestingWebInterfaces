@@ -13,4 +13,4 @@ install:
   - java -jar ./Artifcts/app-order.jar &
 
 build_script:
-  - ./gradlew test -Dselenide.browser=firefox -Dselenide.headless=true --info
+  - chmod +x gradlew -Dselenide.browser=firefox

@@ -13,5 +13,5 @@ install:
   - java -jar ./artifacts/app-order.jar &
 
 build_script:
-  - ps: ./gradlew test --info "-Dselenide.headless=true"  # стартуем Selenide в Headless-режиме (см.ниже)
+  - ./gradlew test --info "-Dselenide.headless=true"  # стартуем Selenide в Headless-режиме (см.ниже)
 

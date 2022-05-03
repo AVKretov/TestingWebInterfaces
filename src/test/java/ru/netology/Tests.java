@@ -22,7 +22,7 @@ class Tests {
         $("[name=\"phone\"]").setValue("+79270000000");
         $(".checkbox__box").click();
         $(By.tagName("Button")).click();
-        $("[data-test-id=\"order-success\"].paragraph_theme_alfa-on-white").shouldHave(exactText("Ваша заявка успешно отправлена! " +
+        $("[data-test-id=\"order-success\"]").shouldHave(exactText("Ваша заявка успешно отправлена! " +
                 "Наш менеджер свяжется с вами в ближайшее время."));
     }
 
@@ -55,26 +55,43 @@ class Tests {
         $("[name=\"name\"]").setValue("Вася Пупкин");
         $("[name=\"phone\"]").setValue("+79270000000");
         $(By.tagName("Button")).click();
-        $("[data-test-id=\"agreement\"] .checkbox__text").shouldHave(text("Я соглашаюсь с условиями обработки и использования" +
+        $("[data-test-id=\"agreement\"].input_invalid .checkbox__text").shouldHave(text("Я соглашаюсь с условиями обработки и использования" +
                 " моих персональных данных и разрешаю сделать запрос в бюро кредитных историй"));
     }
 
     @Test
-    void emptyFields() {
+    void emptyName() {
+        $("[name=\"phone\"]").setValue("+79270000000");
+        $("[data-test-id=\"agreement\"] .checkbox__box").click();
         $(By.tagName("Button")).click();
         $("[data-test-id='name'].input_invalid .input__sub").
                 shouldHave(text("Поле обязательно для заполнения"));
-        $("[name=\"name\"]").doubleClick()
-                .sendKeys("Аркадий Укупник");
-        $(By.tagName("Button")).click();
-        $("[data-test-id=\"phone\"].input_invalid .input__sub").
-                shouldHave(text("Поле обязательно для заполнения"));
-        $("[name=\"phone\"]").doubleClick()
-                .sendKeys("+79991112233");
+    }
+    @Test
+    void emptyPhone() {
+        $("[name=\"name\"]").setValue("Вася Пупкин");
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
         $(By.tagName("Button")).click();
-        $("[data-test-id=\"order-success\"].paragraph_theme_alfa-on-white").shouldHave(exactText("Ваша заявка успешно отправлена! " +
-                "Наш менеджер свяжется с вами в ближайшее время."));
+        $("[data-test-id='phone'].input_invalid .input__sub").
+                shouldHave(text("Поле обязательно для заполнения"));
     }
+
+//    @Test
+//    void emptyFields() {
+//        $(By.tagName("Button")).click();
+//        $("[data-test-id='name'].input_invalid .input__sub").
+//                shouldHave(text("Поле обязательно для заполнения"));
+//        $("[name=\"name\"]").doubleClick()
+//                .sendKeys("Аркадий Укупник");
+//        $(By.tagName("Button")).click();
+//        $("[data-test-id=\"phone\"].input_invalid .input__sub").
+//                shouldHave(text("Поле обязательно для заполнения"));
+//        $("[name=\"phone\"]").doubleClick()
+//                .sendKeys("+79991112233");
+//        $("[data-test-id=\"agreement\"] .checkbox__box").click();
+//        $(By.tagName("Button")).click();
+//        $("[data-test-id=\"order-success\"].paragraph_theme_alfa-on-white").shouldHave(exactText("Ваша заявка успешно отправлена! " +
+//                "Наш менеджер свяжется с вами в ближайшее время."));
+//    }
 
 }
